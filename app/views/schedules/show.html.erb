@@ -1,0 +1,28 @@
+<%= render "shared/partial" %>
+<h1>Schedules#show</h1>
+<p>Find me in app/views/schedules/show.html.erb</p>
+<h1>予定詳細ページ</h1>
+
+<dl>
+  <dt>ID</dt>
+  <dd><%= @schedule.id %></dd>
+
+  <dt>タイトル</dt>
+  <dd><%= @schedule.title %></dd>
+
+  <dt>開始日</dt>
+  <dd><%= @schedule.start_time.strftime('%Y/%m/%d') %></dd>
+
+  <dt>終了日</dt>
+  <dd><%= @schedule.end_time.strftime('%Y/%m/%d') %></dd>
+
+  <dt>終日</dt>
+  <dd><%= @schedule.all_day ? '○' : '' %></dd>
+
+  <dt>スケジュールメモ</dt>
+  <dd><%= @schedule.memo %></dd>
+</dl>
+
+<%= link_to '予定一覧に戻る', schedules_path %>
+<%= link_to '編集', edit_schedule_path(@schedule) %>
+<%= link_to '削除', @schedule, method: :delete, data: { confirm: '本当に予定を削除しますか？' } %>
