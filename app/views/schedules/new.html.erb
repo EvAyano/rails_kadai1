@@ -1,48 +1,48 @@
 <%= render "shared/partial" %>
-<h1>Schedules#new</h1>
-<p>Find me in app/views/schedules/new.html.erb</p>
-<h1>予定新規追加ページ</h1>
+ <div class="container"> 
+  <h2>スケジュール新規追加</h2>
 
-<%= form_with(model: @schedule, url: schedules_path, local: true) do |form| %>
-  <% if @schedule.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@schedule.errors.count, "error") %>があります：</h2>
-      <ul>
-        <% @schedule.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+  <%= form_with(model: @schedule, url: schedules_path, local: true) do |form| %>
+    <% if @schedule.errors.any? %>
+      <div id="error_explanation">
+        <h3><%= pluralize(@schedule.errors.count, "error") %>以下のエラーによりこのスケジュールは保存できませんでした:</h3>
+        <ul>
+          <% @schedule.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= form.label :title,"タイトル" %>
+      <%= form.text_field :title %>
     </div>
-  <% end %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
+    <div class="field">
+      <%= form.label :start_time,"開始日" %>
+      <%= form.date_field :start_time %>
+    </div>
 
-  <div class="field">
-    <%= form.label :start_time %>
-    <%= form.date_field :start_time %>
-  </div>
+    <div class="field">
+      <%= form.label :end_time,"終了日" %>
+      <%= form.date_field :end_time %>
+    </div>
 
-  <div class="field">
-    <%= form.label :end_time %>
-    <%= form.date_field :end_time %>
-  </div>
+    <div class="field">
+      <%= form.label :all_day,"終日" %>
+      <%= form.check_box :all_day %>
+    </div>
 
-  <div class="field">
-    <%= form.label :all_day %>
-    <%= form.check_box :all_day %>
-  </div>
-
-  <div class="field">
-    <%= form.label :memo %>
-    <%= form.text_area :memo %>
-  </div>
+    <div class="field">
+      <%= form.label :memo,"スケジュールメモ"%>
+      <%= form.text_area :memo %>
+    </div>
 
   <div class="actions">
-    <%= form.submit '作成する' %>
+      <%= form.submit '作成する' %>
+  <% end %>
   </div>
-<% end %>
 
-<%= link_to '予定一覧に戻る', schedules_path %>
+  <button><%= link_to '予定一覧に戻る', schedules_path %></button>
+</div> 

@@ -7,10 +7,6 @@ class SchedulesController < ApplicationController
     @total_schedules = Schedule.count
     @current_date = Time.now.in_time_zone('Asia/Tokyo').to_date
     @schedule = Schedule.new
-
-    if @schedules.empty?
-      flash.now[:notice] = "今日は登録された予定がありません。"
-    end
   end
 
   def show

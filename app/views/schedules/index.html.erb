@@ -1,42 +1,46 @@
 <%= render "shared/partial" %>
-<h1>Schedules#index</h1>
-<p>Find me in app/views/schedules/index.html.erb</p>
-
-<!-- app/views/schedules/index.html.erb -->
-<h1>予定一覧ページ</h1>
-<% if flash[:notice] %>
-  <p><%= flash[:notice] %></p>
-<% end %>
-<p>予定の合計数: <%= @schedules.count %></p>
-<p>本日の日付: <%= Time.now.in_time_zone('Tokyo').strftime('%Y/%m/%d') %></p>
-
-<table>
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>タイトル</th>
-      <th>開始日</th>
-      <th>終了日</th>
-      <th>終日</th>
-      <th>更新日時</th>
-      <th>操作</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @schedules.each do |schedule| %>
+ <div class="container">   
+  <div class="alert alert-info alert-dismissible fade show" role="alert">
+  <% if flash[:notice] %>
+    <p><%= flash[:notice] %></p>
+  <% end %>
+  </div>
+  <!-- app/views/schedules/index.html.erb -->
+  <h2>スケジュール一覧</h2>
+  <p>予定の合計数: <%= @schedules.count %></p>
+  <p>本日の日付: <%= Time.now.in_time_zone('Tokyo').strftime('%Y/%m/%d') %></p>
+  <table>
+    <thead>
       <tr>
-        <td><%= schedule.id %></td>
-        <td><%= schedule.title %></td>
-        <td><%= schedule.start_time.strftime('%Y/%m/%d') %></td>
-        <td><%= schedule.end_time.strftime('%Y/%m/%d') %></td>
-        <td><%= schedule.all_day ? '○' : '' %></td>
-        <td><%= schedule.updated_at.strftime('%Y/%m/%d %H:%M') %></td>
-        <td>
-          <%= link_to '詳細', schedule_path(schedule) %>
-          <%= link_to '編集', edit_schedule_path(schedule) %>
-          <%= link_to '削除', schedule_path(schedule), method: :delete, data: { confirm: '本当に予定を削除しますか？' } %>
-        </td>
+        <th>ID</th>
+        <th>タイトル</th>
+        <th>開始日</th>
+        <th>終了日</th>
+        <th>終日</th>
+        <th>更新日時</th>
+        <th>操作</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @schedules.each do |schedule| %>
+        <tr>
+          <td><%= schedule.id %></td>
+          <td><%= schedule.title %></td>
+          <td><%= schedule.start_time.strftime('%Y/%m/%d') %></td>
+          <td><%= schedule.end_time.strftime('%Y/%m/%d') %></td>
+          <td><%= schedule.all_day ? '○' : '' %></td>
+          <td><%= schedule.updated_at.strftime('%Y/%m/%d %H:%M') %></td>
+          <td>
+            <%= link_to '詳細', schedule_path(schedule) %>
+            <%= link_to '編集', edit_schedule_path(schedule) %>
+            <%= link_to '削除', schedule_path(schedule), method: :delete, data: { confirm: '本当に予定を削除しますか？' } %>
+          </td>
+        </tr>
+      <% end %>
+      <button>
+          <%= link_to '予定を新規追加', new_schedule_url %>
+      </button>
+          
+    </tbody>
+  </table>
+ </div> 
