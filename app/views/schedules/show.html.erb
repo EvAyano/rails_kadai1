@@ -1,0 +1,34 @@
+<%= render "shared/partial" %>
+ <div class="container">
+  <h2>スケジュール詳細</h2>
+  <table>
+    <tr>
+      <td><strong>ID</strong></td>
+      <td><%= @schedule.id %></td>
+    </tr>
+    <tr>
+      <td><strong>タイトル</strong></td>
+      <td><%= @schedule.title %></td>
+    </tr>
+    <tr>
+      <td><strong>開始日</strong></td>
+      <td><%= @schedule.start_time.strftime('%Y/%m/%d') %></td>
+    </tr>
+    <tr>
+      <td><strong>終了日</strong></td>
+      <td><%= @schedule.end_time.strftime('%Y/%m/%d') %></td>
+    </tr>
+    <tr>
+      <td><strong>終日</strong></td>
+      <td><%= @schedule.all_day ? '○' : '' %></td>
+    </tr>
+    <tr>
+      <td><strong>スケジュールメモ</strong></td>
+      <td><%= @schedule.memo %></td>
+    </tr>
+  </table>
+
+  <button><%= link_to '予定一覧に戻る', schedules_path %></button>
+  <button><%= link_to '編集', edit_schedule_path(@schedule) %></button>
+  <button><%= link_to '削除', @schedule, method: :delete, data: { confirm: '本当に予定を削除しますか？' } %></button>
+ </div> 

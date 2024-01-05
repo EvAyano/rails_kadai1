@@ -1,0 +1,42 @@
+h1 {
+  font-size: 2.0rem;
+  font-weight: 600;
+  line-height: 1.4em;
+  padding: 5px;
+  background: linear-gradient(transparent 0%, #02f7d2 0%);
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  border-bottom: 7px solid orange;
+  }
+
+h2 {
+  display: inline;
+  font-size: 1.4em;
+}
+
+button{
+  position: relative;
+  background: #e1ebea;
+  width: 120px;
+  text-align: center;
+  font-weight: bold;
+}
+.actions input[type="submit"] {
+  position: relative;
+  width: 120px;
+  text-align: center;
+  font-weight: bold;
+  background-color:  #f2f7f6;
+}
+tr{
+  position: relative;
+  background: #f6faf9;
+  width: 220px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+.container{
+  position: flex;
+  background-color: rgba(231, 157, 10, 0.514);
+}
